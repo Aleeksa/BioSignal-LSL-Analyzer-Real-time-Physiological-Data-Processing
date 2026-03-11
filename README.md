@@ -1,29 +1,33 @@
 # BioSignal LSL Analyzer 🧠💓
 
-Ovaj projekat predstavlja sistem za akviziciju, strimovanje i analizu fizioloških signala (EKG i respiracija) u realnom vremenu koristeći **Python** i **Lab Streaming Layer (LSL)** protokol.
+This project is a comprehensive system for real-time acquisition, streaming, and analysis of physiological signals (ECG and Respiration) using **Python** and the **Lab Streaming Layer (LSL)** protocol.
 
-## 🚀 Glavne Funkcije
-- **BLE Akvizicija:** Direktno povezivanje sa medicinskim senzorima putem Bluetooth Low Energy protokola (`Bleak` biblioteka).
-- **LSL Strimovanje:** Standardizovano slanje podataka kroz lokalnu mrežu, omogućavajući sinhronizaciju sa drugim uređajima.
-- **Digitalna obrada signala (DSP):** Detekcija R-piksela (otkucaja) i izračunavanje HR (Heart Rate) i HRV (Heart Rate Variability) metrika u realnom vremenu.
-- **Simulacija signala:** Ugrađen generator sintetičkih EKG i RSP signala za testiranje sistema bez hardvera.
+## 🚀 Key Features
+- **BLE Acquisition:** Direct connection to medical-grade sensors via the Bluetooth Low Energy protocol (using the `Bleak` library).
+- **LSL Streaming:** Standardized data transmission over a local network, enabling seamless synchronization with other devices and research tools.
+- **Digital Signal Processing (DSP):** Real-time R-peak detection and calculation of Heart Rate (HR) and Heart Rate Variability (HRV) metrics.
+- **Signal Simulation:** Built-in synthetic ECG and RSP signal generator for system testing without the need for physical hardware.
 
 
 
-## 🛠 Tehnologije
+## 🛠 Tech Stack
 - **Python 3.x**
-- **PyLSL:** Za mrežni striming podataka.
-- **Bleak:** Za Bluetooth komunikaciju sa senzorima.
-- **NumPy & SciPy:** Za matematičku obradu signala i detekciju peak-ova.
+- **PyLSL:** For high-precision network data streaming.
+- **Bleak:** For robust Bluetooth communication with wearable sensors.
+- **NumPy & SciPy:** For advanced mathematical signal processing and peak detection algorithms.
 
-## 📂 Struktura fajlova
-- `srce.py`: Prikuplja podatke o pulsu sa Polar senzora.
-- `disanje.py`: Prikuplja i normalizuje podatke o disanju.
-- `klk2_prvi_deo_lsl.py`: Glavni analizator koji računa metrike (HRV, RMSSD, BR).
-- `zadatak.py`: Simulator signala koji emituje podatke na LSL kanale.
-- `check_lsl.py`: Pomoćni alat za proveru aktivnih strimova na mreži.
 
-## ⚙️ Kako pokrenuti
-1. Instalirajte potrebne biblioteke:
+
+## 📂 File Structure
+- `srce.py`: Collects heart rate data from Polar sensors (or similar).
+- `disanje.py`: Collects and normalizes respiration (RSP) data.
+- `klk2_prvi_deo_lsl.py`: The main analyzer script that calculates metrics such as HRV, RMSSD, and Breathing Rate (BR).
+- `zadatak.py`: A signal simulator that broadcasts synthetic data to LSL channels.
+- `check_lsl.py`: A utility tool to discover and verify active LSL streams on the network.
+
+## ⚙️ How to Run
+1. **Install dependencies:**
    ```bash
-   pip install bleak pylsl numpy
+   pip install bleak pylsl numpy scipy
+   python zadatak.py
+   python klk2_prvi_deo_lsl.py
